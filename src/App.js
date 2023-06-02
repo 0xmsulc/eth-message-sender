@@ -50,7 +50,9 @@ const App = () => {
   }, [state.status]);
 
   const isProcessing = state.status === 'Mining';
-  
+  console.log(process.env)
+
+  console.log(process.env.REACT_APP_INFURA_PROJECT_ID)
   return (
     <div className="container mx-auto my-10">
       <h1 className="text-4xl font-bold mb-4">Send ETH with a message</h1>

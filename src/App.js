@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ChainId, DAppProvider, useEthers, useSendTransaction } from '@usedapp/core';
 import { utils } from 'ethers';
+import Confetti from 'react-confetti';
 
 const supportedChains = [ChainId.Mainnet, ChainId.Goerli, ChainId.Arbitrum, ChainId.ArbitrumGoerli];
 
@@ -28,6 +29,7 @@ const App = () => {
   const { chainId, account } = useEthers();
   const { sendTransaction, state } = useSendTransaction();
   const isSupportedChain = supportedChains.includes(chainId);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const handleSendTransaction = () => {
     sendTransaction({
@@ -42,6 +44,8 @@ const App = () => {
       setAddress("");
       setAmount("");
       setMessage("");
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 4500); // Show confetti for 3 seconds
     }
   }, [state.status]);
 
@@ -70,18 +74,23 @@ const App = () => {
       {!isSupportedChain && account && (
         <p className="text-red-500">Unsupported chain. Please use Mainnet or Arbitrum in order to use this app.</p>
       )}
+      {state.status === 'Success' && showConfetti && (
+        <Confetti
+          width={window.innerWidth}
+          height={window.innerHeight}
+        />
+      )}
     </div>
   );
 }
 
-
 const config = {
   readOnlyChainId: ChainId.Mainnet,
   readOnlyUrls: {
-    [ChainId.Mainnet]: "",
-    [ChainId.Goerli]: "",
-    [ChainId.Arbitrum]: "",
-    [ChainId.ArbitrumGoerli]: ""
+    [ChainId.Mainnet]: 'https://mainnet.infura.io/v3/3478acda9c4441e7a7465efdabf18d88',
+    [ChainId.Goerli]: 'https://goerli.infura.io/v3/3478acda9c4441e7a7465efdabf18d88',
+    [ChainId.Arbitrum]: 'https://arbitrum-mainnet.infura.io/v3/3478acda9c4441e7a7465efdabf18d88',
+    [ChainId.ArbitrumGoerli]: 'https://arbitrum-goerli.infura.io/v3/3478acda9c4441e7a7465efdabf18d88'
   },
 }
 

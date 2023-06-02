@@ -45,14 +45,12 @@ const App = () => {
       setAmount("");
       setMessage("");
       setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 4500); // Show confetti for 3 seconds
+      setTimeout(() => setShowConfetti(false), 4500); // Show confetti for 4.5 seconds
     }
   }, [state.status]);
 
   const isProcessing = state.status === 'Mining';
-  console.log(process.env)
 
-  console.log(process.env.REACT_APP_INFURA_PROJECT_ID)
   return (
     <div className="container mx-auto my-10">
       <h1 className="text-4xl font-bold mb-4">Send ETH with a message</h1>
@@ -89,10 +87,10 @@ const App = () => {
 const config = {
   readOnlyChainId: ChainId.Mainnet,
   readOnlyUrls: {
-    [ChainId.Mainnet]: 'https://mainnet.infura.io/v3/3478acda9c4441e7a7465efdabf18d88',
-    [ChainId.Goerli]: 'https://goerli.infura.io/v3/3478acda9c4441e7a7465efdabf18d88',
-    [ChainId.Arbitrum]: 'https://arbitrum-mainnet.infura.io/v3/3478acda9c4441e7a7465efdabf18d88',
-    [ChainId.ArbitrumGoerli]: 'https://arbitrum-goerli.infura.io/v3/3478acda9c4441e7a7465efdabf18d88'
+    [ChainId.Mainnet]: `https://mainnet.infura.io/v3/${process.env.REACT_APP_MAINNET_INFURA_KEY}`,
+    [ChainId.Goerli]: `https://goerli.infura.io/v3/${process.env.REACT_APP_GOERLI_INFURA_KEY}`,
+    [ChainId.Arbitrum]: `https://arbitrum-mainnet.infura.io/v3/${process.env.REACT_APP_ARBITRUM_INFURA_KEY}`,
+    [ChainId.ArbitrumGoerli]: `https://arbitrum-goerli.infura.io/v3/${process.env.REACT_APP_ARBITRUM_GOERLI_INFURA_KEY}`
   },
 }
 

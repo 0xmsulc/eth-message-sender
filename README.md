@@ -50,7 +50,6 @@ To run the Eth Message Sender locally, you'll need the following:
    ```shell
    yarn start
 
-
 6. Open your web browser and navigate to `http://localhost:3000` to access the application.
 
 ## Deploying to Production
@@ -61,7 +60,6 @@ To deploy the Eth Message Sender to a production environment, follow these steps
 
    ```shell
    yarn build
-
 
 2. The build output will be available in the `build` directory. You can host this directory using any static hosting service or configure your own web server.
 

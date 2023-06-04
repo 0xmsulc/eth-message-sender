@@ -63,11 +63,6 @@ To deploy the Eth Message Sender to a production environment, follow these steps
 
 2. The build output will be available in the `build` directory. You can host this directory using any static hosting service or configure your own web server.
 
-## Contributing
 
-Contributions to the Eth Message Sender project are welcome. If you find any issues or have any suggestions for improvement, please feel free to create a GitHub issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+To view the app in production mode, click [here](https://eth-message-sender.surge.sh/).
 
